@@ -1,0 +1,10 @@
+[Unit]
+Description=Run __PROJECT_NAME__ backup every __INTERVAL_HOURS__ hour(s)
+
+[Timer]
+OnCalendar=*-*-* 00/__INTERVAL_HOURS__:00:00
+Persistent=true
+RandomizedDelaySec=60
+
+[Install]
+WantedBy=timers.target
