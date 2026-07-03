@@ -1,4 +1,4 @@
-# Scorex Backup — PostgreSQL → SharePoint (2 giờ/lần)
+# Backup — PostgreSQL → SharePoint (2 giờ/lần)
 
 ## Thành phần
 
