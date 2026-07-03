@@ -19,7 +19,7 @@ Service/timer, thư mục cài đặt, và log file đều được **sinh tự 
 | Biến | Sinh ra |
 |---|---|
 | `PROJECT_NAME=scorex` | `scorex-backup.service`, `scorex-backup.timer`, `/opt/scorex-backup/`, `/var/log/scorex-backup.log` |
-| `PROJECT_NAME=hdbank-crm` | `hdbank-crm-backup.service`, `hdbank-crm-backup.timer`, `/opt/hdbank-crm-backup/`, `/var/log/hdbank-crm-backup.log` |
+| `PROJECT_NAME=demo-crm` | `demo-crm-backup.service`, `demo-crm-backup.timer`, `/opt/demo-crm-backup/`, `/var/log/demo-crm-backup.log` |
 
 Cách dùng cho dự án thứ 2 trở đi (chạy song song, không đụng nhau):
 
@@ -36,7 +36,7 @@ sudo ./install.sh
 
 Hoặc chỉ định tên ngay khi cài, không cần sửa `.env` trước:
 ```bash
-sudo ./install.sh hdbank-crm
+sudo ./install.sh demo-crm
 ```
 (tham số dòng lệnh sẽ ưu tiên hơn giá trị `PROJECT_NAME` trong `.env`)
 
