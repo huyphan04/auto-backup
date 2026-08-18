@@ -1,0 +1,33 @@
+{
+  "environment": "PRD",
+  "sharepoint": {
+    "site_hostname": "havasgroupvncom.sharepoint.com",
+    "site_path": "/sites/BACKUP_PRD",
+    "folder_prefix": "HDBANK"
+  },
+  "discovery": {
+    "postgres_image_patterns": ["postgres"],
+    "exclude_containers": []
+  },
+  "project_name_overrides": {
+    "postgresdb": "postgresdb"
+  },
+  "native_postgres": [
+    {
+      "project_name": "my-project",
+      "env_path": "/opt/my-project/.env",
+      "host": "localhost",
+      "port": 5432,
+      "user_key": "POSTGRES_USER",
+      "password_key": "POSTGRES_PASSWORD",
+      "db_key": "POSTGRES_DB"
+    }
+  ],
+  "retention_hours": 168,
+  "backup_root": "/var/backups/auto-backup",
+  "log_path": "/var/log/auto-backup/backup.jsonl",
+  "notifications": {
+    "telegram_webhook": null,
+    "slack_webhook": null
+  }
+}
