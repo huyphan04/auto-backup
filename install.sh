@@ -2,8 +2,8 @@
 # Run as root: sudo ./install.sh
 set -euo pipefail
 
-INSTALL_DIR="/opt/scorex-backup"
-LOG_FILE="/var/log/scorex-backup.log"
+INSTALL_DIR="/opt/auto-backup"
+LOG_FILE="/var/log/auto-backup.log"
 SERVICE_USER="backup_user"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -49,14 +49,14 @@ if ! python3 -c "import requests" &>/dev/null; then
 fi
 
 echo ">> Installing systemd units..."
-cp "$SRC_DIR/systemd/scorex-backup.service" /etc/systemd/system/
-cp "$SRC_DIR/systemd/scorex-backup.timer" /etc/systemd/system/
+cp "$SRC_DIR/systemd/auto-backup.service" /etc/systemd/system/
+cp "$SRC_DIR/systemd/auto-backup.timer" /etc/systemd/system/
 systemctl daemon-reload
-systemctl enable --now scorex-backup.timer
+systemctl enable --now auto-backup.timer
 
 echo
 echo ">> Done."
-echo "   Check timer status : systemctl status scorex-backup.timer"
-echo "   Check next run time: systemctl list-timers scorex-backup.timer"
+echo "   Check timer status : systemctl status auto-backup.timer"
+echo "   Check next run time: systemctl list-timers auto-backup.timer"
 echo "   Test run manually  : sudo -u $SERVICE_USER $INSTALL_DIR/scripts/run_backup.sh"
 echo "   Watch logs         : tail -f $LOG_FILE"
