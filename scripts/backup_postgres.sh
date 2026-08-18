@@ -14,8 +14,8 @@ if [[ -f "$ENV_FILE" ]]; then
   set +a
 fi
 
-LOG_FILE="${LOG_FILE:-/var/log/scorex-backup.log}"
-BACKUP_DIR="${BACKUP_DIR:-/opt/scorex-backup/dumps}"
+LOG_FILE="${LOG_FILE:-/var/log/auto-backup.log}"
+BACKUP_DIR="${BACKUP_DIR:-/opt/auto-backup/dumps}"
 RETENTION_HOURS="${RETENTION_HOURS:-24}"
 TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
 DUMP_FILE="${BACKUP_DIR}/${POSTGRES_DATABASE}_${TIMESTAMP}.sql.gz"
