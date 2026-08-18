@@ -33,7 +33,7 @@ def load_env(path: Path) -> None:
 
 load_env(ENV_FILE)
 
-LOG_FILE = os.environ.get("LOG_FILE", "/var/log/scorex-backup.log")
+LOG_FILE = os.environ.get("LOG_FILE", "/var/log/auto-backup.log")
 
 logging.basicConfig(
     filename=LOG_FILE,
