@@ -1,4 +1,4 @@
-# Backup — PostgreSQL → SharePoint (2 giờ/lần)
+# Scorex Backup — PostgreSQL → SharePoint (2 giờ/lần)
 
 ## Thành phần
 
@@ -11,36 +11,6 @@
 | `systemd/scorex-backup.service` | Unit chạy `run_backup.sh` với user `backup_user` |
 | `systemd/scorex-backup.timer` | Kích hoạt service mỗi 2 giờ (`OnCalendar=*-*-* 00/2:00:00`) |
 | `install.sh` | Cài đặt toàn bộ: tạo user, thư mục, **file log với quyền đúng trước khi chạy lần đầu**, copy file, bật timer |
-
-## Đặt tên riêng cho từng dự án
-
-Service/timer, thư mục cài đặt, và log file đều được **sinh tự động từ biến `PROJECT_NAME`** trong `.env`, không phải sửa tay từng file:
-
-| Biến | Sinh ra |
-|---|---|
-| `PROJECT_NAME=scorex` | `scorex-backup.service`, `scorex-backup.timer`, `/opt/scorex-backup/`, `/var/log/scorex-backup.log` |
-| `PROJECT_NAME=demo-crm` | `demo-crm-backup.service`, `demo-crm-backup.timer`, `/opt/demo-crm-backup/`, `/var/log/demo-crm-backup.log` |
-
-Cách dùng cho dự án thứ 2 trở đi (chạy song song, không đụng nhau):
-
-```bash
-# copy toàn bộ thư mục template sang bản mới cho dự án khác
-cp -r scorex-backup another-project-backup
-cd another-project-backup
-
-# sửa .env: đổi PROJECT_NAME, POSTGRES_DATABASE, SHAREPOINT_FOLDER cho đúng dự án
-nano .env.example
-
-sudo ./install.sh
-```
-
-Hoặc chỉ định tên ngay khi cài, không cần sửa `.env` trước:
-```bash
-sudo ./install.sh demo-crm
-```
-(tham số dòng lệnh sẽ ưu tiên hơn giá trị `PROJECT_NAME` trong `.env`)
-
-`BACKUP_USER` (mặc định `backup_user`) có thể dùng chung cho nhiều dự án, hoặc đặt riêng mỗi dự án một user nếu muốn cô lập quyền. `BACKUP_INTERVAL_HOURS` (mặc định `2`) cũng chỉnh được theo từng dự án.
 
 ## Cài đặt trên VPS (local_scorex)
 
