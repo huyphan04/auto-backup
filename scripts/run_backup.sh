@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Orchestrator: dump PostgreSQL -> upload to SharePoint.
-# Invoked by scorex-backup.service (triggered by scorex-backup.timer every 2h).
+# Invoked by auto-backup.service (triggered by auto-backup.timer every 2h).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,7 +13,7 @@ if [[ -f "$ENV_FILE" ]]; then
   set +a
 fi
 
-LOG_FILE="${LOG_FILE:-/var/log/scorex-backup.log}"
+LOG_FILE="${LOG_FILE:-/var/log/auto-backup.log}"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] [run] $1" >> "$LOG_FILE"; }
 
